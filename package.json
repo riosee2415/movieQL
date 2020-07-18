@@ -1,0 +1,8 @@
+{
+  "name": "movieql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/riosee2415/movieQL",
+  "author": "4LEAF SOFTWARE DevHO <4leaf.ysh@gmail.com>",
+  "license": "MIT"
+}
