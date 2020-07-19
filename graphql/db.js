@@ -1,35 +1,19 @@
-export const people = [
-  {
-    id: "0",
-    name: "Yoon SangHo",
-    age: 31,
-    gender: "male",
-  },
+import fetch from "node-fetch";
 
-  {
-    id: "1",
-    name: "Kim HanJu",
-    age: 24,
-    gender: "feMale",
-  },
+const API_URL = "https://yts.mx/api/v2/list_movies.json?";
 
-  {
-    id: "2",
-    name: "Noh JeaMin",
-    age: 24,
-    gender: "male",
-  },
+export const getMovies = (limit, rating) => {
+  let REQUEST_URL = API_URL;
 
-  {
-    id: "3",
-    name: "Hwang Ye Gyu",
-    age: 28,
-    gender: "feMale",
-  },
-];
+  if (limit > 0) {
+    REQUEST_URL += `limit=${limit}&`;
+  }
 
-export const getById = (id) => {
-  const filteredPeople = people.filter((person) => person.id === String(id));
+  if (rating > 0) {
+    REQUEST_URL += `minimum_rating=${rating}`;
+  }
 
-  return filteredPeople[0];
+  return fetch(REQUEST_URL)
+    .then((res) => res.json())
+    .then((json) => json.data.movies);
 };
